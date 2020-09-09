@@ -1,0 +1,25 @@
+language: java
+
+jdk:
+  - openjdk8
+
+services:
+  - docker
+
+addons:
+  sonarcloud:
+    organization: "francoisproust"
+
+before_script:
+  - cd ./docker/dev/
+  - docker-compose up -d
+  - cd ../../src
+
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - mvn clean -P test-consumer,test-business org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=francoisproust_OCP9 -Dsonar.login=e3c17da1cc375d96b6e1cb1a9b3950a0521dcc32
+
+after_script:
+  - cd ../docker/dev
+  - docker-compose stop
+  - docker-compose rm -f
