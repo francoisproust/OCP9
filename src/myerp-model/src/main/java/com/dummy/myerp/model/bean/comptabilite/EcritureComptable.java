@@ -80,7 +80,6 @@ public class EcritureComptable {
      *
      * @return {@link BigDecimal}, {@link BigDecimal#ZERO} si aucun montant au débit
      */
-    // TODO à tester
     public BigDecimal getTotalDebit() {
         BigDecimal vRetour = BigDecimal.ZERO;
         for (LigneEcritureComptable vLigneEcritureComptable : listLigneEcriture) {
@@ -111,8 +110,7 @@ public class EcritureComptable {
      * @return boolean
      */
     public boolean isEquilibree() {
-        boolean vRetour = this.getTotalDebit().equals(getTotalCredit());
-        return vRetour;
+        return this.getTotalDebit().compareTo(getTotalCredit()) == 0;
     }
 
     // ==================== Méthodes ====================
@@ -121,16 +119,16 @@ public class EcritureComptable {
         final StringBuilder vStB = new StringBuilder(this.getClass().getSimpleName());
         final String vSEP = ", ";
         vStB.append("{")
-            .append("id=").append(id)
-            .append(vSEP).append("journal=").append(journal)
-            .append(vSEP).append("reference='").append(reference).append('\'')
-            .append(vSEP).append("date=").append(date)
-            .append(vSEP).append("libelle='").append(libelle).append('\'')
-            .append(vSEP).append("totalDebit=").append(this.getTotalDebit().toPlainString())
-            .append(vSEP).append("totalCredit=").append(this.getTotalCredit().toPlainString())
-            .append(vSEP).append("listLigneEcriture=[\n")
-            .append(StringUtils.join(listLigneEcriture, "\n")).append("\n]")
-            .append("}");
+                .append("id=").append(id)
+                .append(vSEP).append("journal=").append(journal)
+                .append(vSEP).append("reference='").append(reference).append('\'')
+                .append(vSEP).append("date=").append(date)
+                .append(vSEP).append("libelle='").append(libelle).append('\'')
+                .append(vSEP).append("totalDebit=").append(this.getTotalDebit().toPlainString())
+                .append(vSEP).append("totalCredit=").append(this.getTotalCredit().toPlainString())
+                .append(vSEP).append("listLigneEcriture=[\n")
+                .append(StringUtils.join(listLigneEcriture, "\n")).append("\n]")
+                .append("}");
         return vStB.toString();
     }
 }
