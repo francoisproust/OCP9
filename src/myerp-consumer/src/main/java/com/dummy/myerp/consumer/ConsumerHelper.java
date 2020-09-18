@@ -11,8 +11,12 @@ public abstract class ConsumerHelper {
     /** Le DaoProxy à utiliser pour accéder aux autres classes de DAO */
     private static DaoProxy daoProxy;
 
-
     // ==================== Constructeurs ====================
+    /**
+     * Constructeur privée pour sécurisation
+     */
+    private ConsumerHelper() { }
+
     /**
      * Méthode de configuration de la classe
      *

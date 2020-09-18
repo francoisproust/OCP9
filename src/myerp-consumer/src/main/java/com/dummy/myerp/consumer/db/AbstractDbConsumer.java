@@ -1,6 +1,6 @@
 package com.dummy.myerp.consumer.db;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 import javax.sql.DataSource;
 
@@ -54,7 +54,7 @@ public abstract class AbstractDbConsumer {
      * @return SimpleJdbcTemplate
      */
     protected DataSource getDataSource(DataSourcesEnum pDataSourceId) {
-        DataSource vRetour = this.mapDataSource.get(pDataSourceId);
+        DataSource vRetour = mapDataSource.get(pDataSourceId);
         if (vRetour == null) {
             throw new UnsatisfiedLinkError("La DataSource suivante n'a pas été initialisée : " + pDataSourceId);
         }
@@ -77,10 +77,8 @@ public abstract class AbstractDbConsumer {
                                                     String pSeqName, Class<T> pSeqValueClass) {
 
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource(pDataSourcesId));
-        String vSeqSQL = "SELECT last_value FROM " + pSeqName;
-        T vSeqValue = vJdbcTemplate.queryForObject(vSeqSQL, pSeqValueClass);
-
-        return vSeqValue;
+        String vSeqSQL = String.format("SELECT last_value FROM %s", pSeqName);
+        return vJdbcTemplate.queryForObject(vSeqSQL, pSeqValueClass);
     }
 
 
@@ -93,7 +91,7 @@ public abstract class AbstractDbConsumer {
     public static void configure(Map<DataSourcesEnum, DataSource> pMapDataSource) {
         // On pilote l'ajout avec l'Enum et on ne rajoute pas tout à l'aveuglette...
         //   ( pas de AbstractDbDao.mapDataSource.putAll(...) )
-        Map<DataSourcesEnum, DataSource> vMapDataSource = new HashMap<>(DataSourcesEnum.values().length);
+        EnumMap<DataSourcesEnum, DataSource> vMapDataSource = new EnumMap<>(DataSourcesEnum.class);
         DataSourcesEnum[] vDataSourceIds = DataSourcesEnum.values();
         for (DataSourcesEnum vDataSourceId : vDataSourceIds) {
             DataSource vDataSource = pMapDataSource.get(vDataSourceId);
@@ -101,7 +99,7 @@ public abstract class AbstractDbConsumer {
             // (NB : elle est considérée comme configurée si elle est dans pMapDataSource mais à null)
             if (vDataSource == null) {
                 if (!pMapDataSource.containsKey(vDataSourceId)) {
-                    LOGGER.error("La DataSource " + vDataSourceId + " n'a pas été initialisée !");
+                    LOGGER.error("La DataSource {} n'a pas été initialisée !", vDataSourceId);
                 }
             } else {
                 vMapDataSource.put(vDataSourceId, vDataSource);

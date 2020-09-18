@@ -15,7 +15,7 @@ import com.dummy.myerp.model.bean.comptabilite.EcritureComptable;
 public class EcritureComptableRM implements RowMapper<EcritureComptable> {
 
     /** JournalComptableDaoCache */
-    private JournalComptableDaoCache journalComptableDaoCache = new JournalComptableDaoCache();
+    private JournalComptableDaoCache journalComptableDaoCache;
 
     public EcritureComptableRM() {
         journalComptableDaoCache = new JournalComptableDaoCache();
