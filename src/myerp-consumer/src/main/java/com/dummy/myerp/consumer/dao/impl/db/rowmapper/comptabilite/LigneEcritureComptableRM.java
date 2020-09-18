@@ -14,8 +14,11 @@ import com.dummy.myerp.model.bean.comptabilite.LigneEcritureComptable;
 public class LigneEcritureComptableRM implements RowMapper<LigneEcritureComptable> {
 
     /** CompteComptableDaoCache */
-    private final CompteComptableDaoCache compteComptableDaoCache = new CompteComptableDaoCache();
+    private CompteComptableDaoCache compteComptableDaoCache = new CompteComptableDaoCache();
 
+    public LigneEcritureComptableRM(){
+        compteComptableDaoCache = new CompteComptableDaoCache();
+    }
 
     @Override
     public LigneEcritureComptable mapRow(ResultSet pRS, int pRowNum) throws SQLException {
