@@ -1,11 +1,12 @@
 package com.dummy.myerp.consumer.dao.contrat;
 
-import java.util.List;
-
 import com.dummy.myerp.model.bean.comptabilite.CompteComptable;
 import com.dummy.myerp.model.bean.comptabilite.EcritureComptable;
 import com.dummy.myerp.model.bean.comptabilite.JournalComptable;
+import com.dummy.myerp.model.bean.comptabilite.SequenceEcritureComptable;
 import com.dummy.myerp.technical.exception.NotFoundException;
+
+import java.util.List;
 
 
 /**
@@ -15,6 +16,7 @@ public interface ComptabiliteDao {
 
     /**
      * Renvoie la liste des Comptes Comptables
+     *
      * @return {@link List}
      */
     List<CompteComptable> getListCompteComptable();
@@ -22,6 +24,7 @@ public interface ComptabiliteDao {
 
     /**
      * Renvoie la liste des Journaux Comptables
+     *
      * @return {@link List}
      */
     List<JournalComptable> getListJournalComptable();
@@ -31,6 +34,7 @@ public interface ComptabiliteDao {
 
     /**
      * Renvoie la liste des Écritures Comptables
+     *
      * @return {@link List}
      */
     List<EcritureComptable> getListEcritureComptable();
@@ -80,4 +84,27 @@ public interface ComptabiliteDao {
      * @param pId l'id de l'écriture
      */
     void deleteEcritureComptable(Integer pId);
+
+    /**
+     * Renvoie la dernière valeur de la séquence pour un journal et une année donnés
+     *
+     * @param pCodeJournal code du Journal
+     * @param pAnnee       année de la séquence
+     * @return la dernière valeur de la séquence
+     */
+    Integer getDernierNumeroSequenceComptableByJournalAndAnnee(String pCodeJournal, Integer pAnnee);
+
+    /**
+     * Insert une nouvelle séquence pour un journal et une année donnés
+     *
+     * @param pSequenceEcritureComptable Sequence à inserer
+     */
+    void insertSequenceEcritureComptable(SequenceEcritureComptable pSequenceEcritureComptable);
+
+    /**
+     * Mets à jour une séquence pour un journal et une année donnés
+     *
+     * @param pSequenceEcritureComptable Sequence à updater
+     */
+    void updateSequenceEcritureComptable(SequenceEcritureComptable pSequenceEcritureComptable);
 }
