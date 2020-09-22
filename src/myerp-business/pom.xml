@@ -89,6 +89,13 @@
             <artifactId>postgresql</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- spring test framework -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>4.3.7.RELEASE</version>
+        </dependency>
     </dependencies>
 
 
@@ -120,6 +127,15 @@
                             </execution>
                         </executions>
                     </plugin>
+                    <plugin>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <includes>
+                                <include>**/*IT</include>
+                                <include>*Test*</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
                 </plugins>
                 <testResources>
                     <testResource>
@@ -132,7 +148,6 @@
             </build>
         </profile>
     </profiles>
-
 
     <!-- =============================================================== -->
     <!-- Build -->
@@ -164,15 +179,13 @@
                         </goals>
                         <configuration>
                             <rules>
-                                <!--
                                 <rule>
                                     <limits>
                                         <limit>
-                                            <minimum>0.9</minimum>
+                                            <minimum>0.75</minimum>
                                         </limit>
                                     </limits>
                                 </rule>
-                                -->
                             </rules>
                         </configuration>
                     </execution>
