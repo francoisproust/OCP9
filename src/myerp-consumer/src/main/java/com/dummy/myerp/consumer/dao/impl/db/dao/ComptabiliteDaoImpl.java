@@ -175,7 +175,7 @@ public class ComptabiliteDaoImpl extends AbstractDbConsumer implements Comptabil
 
         // ----- Récupération de l'id
         Integer vId = this.queryGetSequenceValuePostgreSQL(DataSourcesEnum.MYERP, "myerp.ecriture_comptable_id_seq",
-                Integer.class);
+                                                           Integer.class);
         pEcritureComptable.setId(vId);
 
         // ===== Liste des lignes d'écriture

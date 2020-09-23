@@ -1,6 +1,5 @@
-package java.com.dummy.myerp.consumer.dao.impl.db.dao;
+package com.dummy.myerp.consumer.dao.impl.db.dao;
 
-import com.dummy.myerp.consumer.dao.impl.db.dao.ComptabiliteDaoImpl;
 import com.dummy.myerp.model.bean.comptabilite.*;
 import com.dummy.myerp.technical.exception.NotFoundException;
 import org.junit.Test;

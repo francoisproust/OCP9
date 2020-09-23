@@ -1,6 +1,5 @@
 package com.dummy.myerp.technical.util.spring;
 
-import com.dummy.myerp.technical.util.spring.NullFactoryBean;
 import org.junit.Assert;
 import org.junit.Test;
 

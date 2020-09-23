@@ -47,34 +47,34 @@
         <property name="reqSQLinsertEcritureComptable">
             <value>
                 INSERT INTO myerp.ecriture_comptable (
-                id,
-                journal_code, reference, date, libelle
+                    id,
+                    journal_code, reference, date, libelle
                 ) VALUES (
-                nextval('myerp.ecriture_comptable_id_seq'),
-                :journal_code, :reference, :date, :libelle
+                    nextval('myerp.ecriture_comptable_id_seq'),
+                    :journal_code, :reference, :date, :libelle
                 )
             </value>
         </property>
         <property name="reqSQLinsertListLigneEcritureComptable">
             <value>
                 INSERT INTO myerp.ligne_ecriture_comptable (
-                ecriture_id, ligne_id, compte_comptable_numero, libelle, debit,
-                credit
+                    ecriture_id, ligne_id, compte_comptable_numero, libelle, debit,
+                    credit
                 ) VALUES (
-                :ecriture_id, :ligne_id, :compte_comptable_numero, :libelle, :debit,
-                :credit
+                    :ecriture_id, :ligne_id, :compte_comptable_numero, :libelle, :debit,
+                    :credit
                 )
             </value>
         </property>
         <property name="reqSQLupdateEcritureComptable">
             <value>
                 UPDATE myerp.ecriture_comptable SET
-                journal_code = :journal_code,
-                reference = :reference,
-                date = :date,
-                libelle = :libelle
+                    journal_code = :journal_code,
+                    reference = :reference,
+                    date = :date,
+                    libelle = :libelle
                 WHERE
-                id = :id
+                    id = :id
             </value>
         </property>
         <property name="reqSQLdeleteEcritureComptable">
@@ -98,17 +98,17 @@
         <property name="reqSQLinsertSequenceJournalComptable">
             <value>
                 INSERT INTO myerp.sequence_ecriture_comptable (
-                journal_code, annee, derniere_valeur
+                    journal_code, annee, derniere_valeur
                 ) VALUES (
-                :journal_code, :annee, :sequence)
+                    :journal_code, :annee, :sequence)
             </value>
         </property>
         <property name="reqSQLupdateSequenceJournalComptable">
             <value>
                 UPDATE myerp.sequence_ecriture_comptable SET
-                derniere_valeur = :sequence
+                    derniere_valeur = :sequence
                 WHERE
-                journal_code = :journal_code AND annee = :annee
+                    journal_code = :journal_code AND annee = :annee
             </value>
         </property>
     </bean>
