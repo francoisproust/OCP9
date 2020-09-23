@@ -9,15 +9,15 @@
   </skin>
 
   <bannerLeft>
-    <name>${project.name}</name>
+    <name>MyERP</name>
     <src>img/logo-app.png</src>
-    <href>${project.url}</href>
+    <href>http://www.dummy.com/projects/myerp</href>
   </bannerLeft>
 
   <bannerRight>
-    <name>${project.organization.name}</name>
+    <name>Dummy</name>
     <src>img/logo-client.png</src>
-    <href>${project.organization.url}</href>
+    <href>http://www.dummy.com</href>
   </bannerRight>
 
 
@@ -26,7 +26,7 @@
 
   <body>
 
-  	<breadcrumbs>
+    <breadcrumbs>
       <item name="Accueil" href="index.html"/>
     </breadcrumbs>
 
@@ -35,16 +35,16 @@
     </menu>
 
     <menu name="Documentations">
-    	<item name="Document Exemple 1" href="doc/fichierDocExemple.txt"/>
+      <item name="Document Exemple 1" href="doc/fichierDocExemple.txt"/>
     </menu>
 
 
-	<menu ref="parent" inherit="top"/>
+    <menu ref="parent" inherit="top"/>
     <menu ref="reports" inherit="top"/>
     <menu ref="modules" inherit="top"/>
 
     <links>
-    	<item name="MyERP" href="http://www.dummy.com/myerp"/>
+      <item name="MyERP" href="http://www.dummy.com/myerp"/>
     </links>
 
     <footer>All rights reserved to ${project.organization.name}</footer>
